@@ -1,0 +1,12 @@
+/raw_photos/
+/ground_truth/
+
+/noise/
+/evaluations/
+
+# competition dataset images (keep the README tracked)
+competition_data/public/
+competition_data/submissions/
+
+__pycache__/
+*.py[cod]

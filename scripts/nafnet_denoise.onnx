@@ -1,0 +1,540 @@
+
+pytorch2.11.0+cu128:‘…
+ü	
+input
+dncnn.0.weightconv2dnode_Conv_103"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†Jõ
+	namespaceç: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.0: torch.nn.modules.conv.Conv2d/conv2d: aten.conv2d.defaultJ?
+!pkg.onnxscript.rewriter.rule_nameRemoveOptionalBiasFromConvJ£
+pkg.torch.onnx.class_hierarchyÄ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.conv.Conv2d', 'aten.conv2d.default']J´
+pkg.torch.onnx.fx_nodeê%conv2d : [num_users=1] = call_function[target=torch.ops.aten.conv2d.default](args = (%x, %p_dncnn_0_weight, None, [1, 1], [1, 1]), kwargs = {})J@
+pkg.torch.onnx.name_scopes"['', 'dncnn', 'dncnn.0', 'conv2d']Jï
+pkg.torch.onnx.stack_traceˆFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+ª
+conv2drelu	node_relu"ReluJõ
+	namespaceç: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.1: torch.nn.modules.activation.ReLU/relu: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']JÉ
+pkg.torch.onnx.fx_nodei%relu : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%conv2d,), kwargs = {})J>
+pkg.torch.onnx.name_scopes ['', 'dncnn', 'dncnn.1', 'relu']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+≥
+relu
+dncnn.2.weight
+dncnn.2.weight_biasgetitemnode_Conv_105"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J·
+	namespace”: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.3: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J¶
+pkg.torch.onnx.fx_nodeã%_native_batch_norm_legit_no_training : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_1, %p_dncnn_3_weight, %p_dncnn_3_bias, %b_dncnn_3_running_mean, %b_dncnn_3_running_var, 0.1, 1e-05), kwargs = {})J^
+pkg.torch.onnx.name_scopes@['', 'dncnn', 'dncnn.3', '_native_batch_norm_legit_no_training']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+«
+getitemrelu_1node_relu_1"ReluJù
+	namespaceè: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.4: torch.nn.modules.activation.ReLU/relu_1: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']JÜ
+pkg.torch.onnx.fx_nodel%relu_1 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem,), kwargs = {})J@
+pkg.torch.onnx.name_scopes"['', 'dncnn', 'dncnn.4', 'relu_1']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+Ω
+relu_1
+dncnn.5.weight
+dncnn.5.weight_bias	getitem_3node_Conv_107"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J„
+	namespace’: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.6: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_1: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J®
+pkg.torch.onnx.fx_nodeç%_native_batch_norm_legit_no_training_1 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_2, %p_dncnn_6_weight, %p_dncnn_6_bias, %b_dncnn_6_running_mean, %b_dncnn_6_running_var, 0.1, 1e-05), kwargs = {})J`
+pkg.torch.onnx.name_scopesB['', 'dncnn', 'dncnn.6', '_native_batch_norm_legit_no_training_1']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+À
+	getitem_3relu_2node_relu_2"ReluJù
+	namespaceè: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.7: torch.nn.modules.activation.ReLU/relu_2: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Jà
+pkg.torch.onnx.fx_noden%relu_2 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem_3,), kwargs = {})J@
+pkg.torch.onnx.name_scopes"['', 'dncnn', 'dncnn.7', 'relu_2']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+Ω
+relu_2
+dncnn.8.weight
+dncnn.8.weight_bias	getitem_6node_Conv_109"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J„
+	namespace’: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.9: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_2: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J®
+pkg.torch.onnx.fx_nodeç%_native_batch_norm_legit_no_training_2 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_3, %p_dncnn_9_weight, %p_dncnn_9_bias, %b_dncnn_9_running_mean, %b_dncnn_9_running_var, 0.1, 1e-05), kwargs = {})J`
+pkg.torch.onnx.name_scopesB['', 'dncnn', 'dncnn.9', '_native_batch_norm_legit_no_training_2']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+Õ
+	getitem_6relu_3node_relu_3"ReluJû
+	namespaceê: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.10: torch.nn.modules.activation.ReLU/relu_3: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Jà
+pkg.torch.onnx.fx_noden%relu_3 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem_6,), kwargs = {})JA
+pkg.torch.onnx.name_scopes#['', 'dncnn', 'dncnn.10', 'relu_3']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+≈
+relu_3
+dncnn.11.weight
+dncnn.11.weight_bias	getitem_9node_Conv_111"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J‰
+	namespace÷: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.12: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_3: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J¨
+pkg.torch.onnx.fx_nodeë%_native_batch_norm_legit_no_training_3 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_4, %p_dncnn_12_weight, %p_dncnn_12_bias, %b_dncnn_12_running_mean, %b_dncnn_12_running_var, 0.1, 1e-05), kwargs = {})Ja
+pkg.torch.onnx.name_scopesC['', 'dncnn', 'dncnn.12', '_native_batch_norm_legit_no_training_3']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+Õ
+	getitem_9relu_4node_relu_4"ReluJû
+	namespaceê: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.13: torch.nn.modules.activation.ReLU/relu_4: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Jà
+pkg.torch.onnx.fx_noden%relu_4 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem_9,), kwargs = {})JA
+pkg.torch.onnx.name_scopes#['', 'dncnn', 'dncnn.13', 'relu_4']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+∆
+relu_4
+dncnn.14.weight
+dncnn.14.weight_bias
+getitem_12node_Conv_113"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J‰
+	namespace÷: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.15: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_4: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J¨
+pkg.torch.onnx.fx_nodeë%_native_batch_norm_legit_no_training_4 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_5, %p_dncnn_15_weight, %p_dncnn_15_bias, %b_dncnn_15_running_mean, %b_dncnn_15_running_var, 0.1, 1e-05), kwargs = {})Ja
+pkg.torch.onnx.name_scopesC['', 'dncnn', 'dncnn.15', '_native_batch_norm_legit_no_training_4']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+œ
+
+getitem_12relu_5node_relu_5"ReluJû
+	namespaceê: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.16: torch.nn.modules.activation.ReLU/relu_5: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Jâ
+pkg.torch.onnx.fx_nodeo%relu_5 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem_12,), kwargs = {})JA
+pkg.torch.onnx.name_scopes#['', 'dncnn', 'dncnn.16', 'relu_5']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+∆
+relu_5
+dncnn.17.weight
+dncnn.17.weight_bias
+getitem_15node_Conv_115"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†J‰
+	namespace÷: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.18: torch.nn.modules.batchnorm.BatchNorm2d/_native_batch_norm_legit_no_training_5: aten._native_batch_norm_legit_no_training.defaultJV
+!pkg.onnxscript.rewriter.rule_name1FuseBatchNormIntoConv, RemoveOptionalBiasFromConvJÀ
+pkg.torch.onnx.class_hierarchy®['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.batchnorm.BatchNorm2d', 'aten._native_batch_norm_legit_no_training.default']J¨
+pkg.torch.onnx.fx_nodeë%_native_batch_norm_legit_no_training_5 : [num_users=1] = call_function[target=torch.ops.aten._native_batch_norm_legit_no_training.default](args = (%conv2d_6, %p_dncnn_18_weight, %p_dncnn_18_bias, %b_dncnn_18_running_mean, %b_dncnn_18_running_var, 0.1, 1e-05), kwargs = {})Ja
+pkg.torch.onnx.name_scopesC['', 'dncnn', 'dncnn.18', '_native_batch_norm_legit_no_training_5']Jˆ
+pkg.torch.onnx.stack_trace◊File "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/batchnorm.py", line 194, in forward
+    return F.batch_norm(
+œ
+
+getitem_15relu_6node_relu_6"ReluJû
+	namespaceê: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.19: torch.nn.modules.activation.ReLU/relu_6: aten.relu.defaultJ•
+pkg.torch.onnx.class_hierarchyÇ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.activation.ReLU', 'aten.relu.default']Jâ
+pkg.torch.onnx.fx_nodeo%relu_6 : [num_users=1] = call_function[target=torch.ops.aten.relu.default](args = (%getitem_15,), kwargs = {})JA
+pkg.torch.onnx.name_scopes#['', 'dncnn', 'dncnn.19', 'relu_6']Jç
+pkg.torch.onnx.stack_traceÓFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/activation.py", line 143, in forward
+    return F.relu(input, inplace=self.inplace)
+±	
+relu_6
+dncnn.20.weightconv2d_7node_Conv_116"Conv*
+group†*
+pads@@@@†*
+auto_pad"NOTSET†*
+strides@@†*
+	dilations@@†Jû
+	namespaceê: __main__.LightweightDenoiser/dncnn: torch.nn.modules.container.Sequential/dncnn.20: torch.nn.modules.conv.Conv2d/conv2d_7: aten.conv2d.defaultJ?
+!pkg.onnxscript.rewriter.rule_nameRemoveOptionalBiasFromConvJ£
+pkg.torch.onnx.class_hierarchyÄ['__main__.LightweightDenoiser', 'torch.nn.modules.container.Sequential', 'torch.nn.modules.conv.Conv2d', 'aten.conv2d.default']J≥
+pkg.torch.onnx.fx_nodeò%conv2d_7 : [num_users=1] = call_function[target=torch.ops.aten.conv2d.default](args = (%relu_6, %p_dncnn_20_weight, None, [1, 1], [1, 1]), kwargs = {})JC
+pkg.torch.onnx.name_scopes%['', 'dncnn', 'dncnn.20', 'conv2d_7']Jï
+pkg.torch.onnx.stack_traceˆFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+  File "/usr/local/lib/python3.13/dist-packages/torch/nn/modules/conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+˙
+input
+conv2d_7outputnode_sub_28"SubJC
+	namespace6: __main__.LightweightDenoiser/sub_28: aten.sub.TensorJU
+pkg.torch.onnx.class_hierarchy3['__main__.LightweightDenoiser', 'aten.sub.Tensor']Jà
+pkg.torch.onnx.fx_noden%sub_28 : [num_users=1] = call_function[target=torch.ops.aten.sub.Tensor](args = (%x, %conv2d_7), kwargs = {})J,
+pkg.torch.onnx.name_scopes['', 'sub_28']Jx
+pkg.torch.onnx.stack_traceZFile "/tmp/ipykernel_1897/3423942388.py", line 26, in forward
+    return x - self.dncnn(x)
+main_graph*_@Bdncnn.0.weightj$
+locationnafnet_denoise.onnx.dataj
+offset0j
+length6912p*e@@Bdncnn.2.weightj$
+locationnafnet_denoise.onnx.dataj
+offset13824j
+length147456p*f@@Bdncnn.5.weightj$
+locationnafnet_denoise.onnx.dataj
+offset161280j
+length147456p*f@@Bdncnn.8.weightj$
+locationnafnet_denoise.onnx.dataj
+offset308736j
+length147456p*g@@Bdncnn.11.weightj$
+locationnafnet_denoise.onnx.dataj
+offset456192j
+length147456p*g@@Bdncnn.14.weightj$
+locationnafnet_denoise.onnx.dataj
+offset603648j
+length147456p*g@@Bdncnn.17.weightj$
+locationnafnet_denoise.onnx.dataj
+offset751104j
+length147456p*c@Bdncnn.20.weightj$
+locationnafnet_denoise.onnx.dataj
+offset6912j
+length6912p*ú@Bdncnn.2.weight_biasJÄi¨ƒ?r‘<’,„=–T`?ª3!æ®¡ê>uû¡ø˘úøP®®ø»w©øçÎ¨?Å™=ø/8‘>ˆ[ÿøÆÓÇ?·äƒøh-(øïÄ»ø˜‚n?˜•„?Ω–ø∫∏ä?˘-∆øQå?È≤øõcò? Céø¶è≠øà”≤øùñ¡øD7C?§èà?BEû?∫Á£?éRƒø `)æöø7Èß?ôxdøü!◊?Œ3ç?ﬁ\∞øÕ£ø≈˚Ωø?ı…ø#∞ÑøJ”;æ◊ﬂørbŸø±ˆê?‰ãä?–âºøj	?†T„?M&≤øM	 ø$ƒòø£z∏?J—£ø:jì?á°D>I¨∆ø";ù?Ã§…æ*ú@Bdncnn.5.weight_biasJÄ?ˆ?E—6øúÿ∂Ω¸8æ®°˘æ∆ÇÙ>r©úæÁ†Ö>ä>Äú:Åº>ÏØΩf™á?≤ÜÉø<sπº™#e>:ÂrøÈ⁄Pø!•ˇ=â•FøÇ"˜>‹øóúøƒF&?aôﬁæQ}ø"˙Ñ?Ñ˘õΩf1?ò<?øû,?¬<çø:zøˇ¶?9ªø
+GêøÈ¸Ωl2dæPZ?˝ä?çˇ∫æ#Køe™*?
+j?êå∞>õëø—`ø>\kˆ>c&öæ›"à>Ùú+øµûZ?L=“æ¯ˇ…æ_uëøS=3ãD?±äX?gXñ>ös%?e©ãø—1ÀæÕ).>JÚç?*ú@Bdncnn.8.weight_biasJÄb(,øµi´>a‰ >ì[—>‘LªΩÈ„Ωvô@ø‹Ùøﬂc€æ6ñSΩééÑ>•”JøáÂ|øl”Q>À¬D?Chør‚¿æ«„ÅøX`¶=ÄäGøˆªåæq5∏Ωﬂ,ô>êppº∏?Kÿ2ø~·ˇæ®Íwø≤lF?yMør·™æ0<ø=µ >6úû>Pgjº∑öÃø˜?@¬R;º˜}ø&a@>`7>…rÜøRv⁄=‰ßãΩm?aõsæÜ…wø¶¡>∏ªï;!¥SæÜ>”`ı=õ√æø™x&>∆˛>§Uíæ£∂Ω»—S>¥=?¿^læÒøßáπ=H^ø*ù@Bdncnn.11.weight_biasJÄíô?îã‚>[˙ø{>ëiøˆP‡>¡>=#ø√ØåæÍ◊=Çè∞>£=vÚŒº=øóô>†s»Ωw≈€æÙNøÊµ¥Ω‡ù>¶ÇÅ>æQ‹æ√Êø≤Xø¶∆>Œ^!øåñ∫>KOË>ÙéøÊ¸ê=2ˆ>DjI>∑ø∏µ=>	ø µ«æ`Å∫ü˙5ø,~Ωãµ	ø$Ü>úø
+∂
+?I1˝>»aÕΩÍ&‘>
+¶>\§öΩ?vHøOFπæŒ?>¯8.ªŸƒæéJÙ=Ùhø*#◊æà>¨gi>ÿD9=10¥æ4)ø®{√=é´>˛8éæ*ù@Bdncnn.14.weight_biasJÄà‚y< i¥∫nræÎj˙Ωtñøÿ‹ﬂæ§ù&æ@Y<®òÓæ‘ë1>Ÿ±ø*,æ]+ﬂΩÒåã>Ω€æ∫Òæóum>@™ç>1xøC)∂æ1n¸æè†=B
+>ïóSææ5äΩUw>Èº13‹=˙/ÕΩ°æøT>§µ>u¢æ≤Ç æTÙ§;éJ>2—#>›ä∫>mº˛æ≤X=ˆ’=_Ò—æZæ˛Ωúøú±æ[,ø≠?	oOæ£+)=—˙¯æ|âø+⁄tøôwæ>F©æ&µ?ƒ|Qø2Uø8mŒæ[(†æ¯•æ˝ü	øì†æ>2ø*ù@Bdncnn.17.weight_biasJÄi◊<ıKE>:≈‘Ω6?ó=VAΩß"=ΩY˙=º[ÿ=ﬂoΩÖ=¥A =˘üSΩˆ≠Ω√ÓGæ”Œ>ú0º<πk>ë¨>k-=≈*Ω>–@3>ÜZ°ºE˙=Bùµ=¿Û->?>´™ç=îöÀ=Ç§ßº9Kº˛=∞=Yàà=m&a>/Ü≈=N√6=Z≤4=-ô=>«°˛=À=M%é=ª'∑=ãçcºLì£Ωÿù∏Ω∞¢áΩÁúú=ß∆Ω2∆ﬂ=ˆSæuC¨Ω0‰~º”ù">$µ|=TjΩ=ç?ÑΩ@[ë=ƒØ<á˛ΩÜ/ËΩÁ.>›û|ΩR∏æ<˜›æ®¥ΩZ—
+input"
+ 
+
+batch_size
+
+Ä
+Ä"=
+/pkg.torch.export.graph_signature.InputSpec.kind
+USER_INPUT"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"&
+!pkg.torch.onnx.original_node_namexbö
+output"
+ 
+
+batch_size
+
+Ä
+Ä"?
+0pkg.torch.export.graph_signature.OutputSpec.kindUSER_OUTPUT"+
+!pkg.torch.onnx.original_node_namesub_28j‹
+dncnn.0.weight
+
+@
+
+
+"<
+/pkg.torch.export.graph_signature.InputSpec.kind	PARAMETER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"5
+!pkg.torch.onnx.original_node_namep_dncnn_0_weightj(
+dncnn.2.weight
+
+@
+@
+
+j(
+dncnn.5.weight
+
+@
+@
+
+j(
+dncnn.8.weight
+
+@
+@
+
+j)
+dncnn.11.weight
+
+@
+@
+
+j)
+dncnn.14.weight
+
+@
+@
+
+j)
+dncnn.17.weight
+
+@
+@
+
+jﬁ
+dncnn.20.weight
+
+
+@
+
+"<
+/pkg.torch.export.graph_signature.InputSpec.kind	PARAMETER"=
+5pkg.torch.export.graph_signature.InputSpec.persistentNone"6
+!pkg.torch.onnx.original_node_namep_dncnn_20_weightj!
+dncnn.2.weight_bias
+
+
+@j!
+dncnn.5.weight_bias
+
+
+@j!
+dncnn.8.weight_bias
+
+
+@j"
+dncnn.11.weight_bias
+
+
+@j"
+dncnn.14.weight_bias
+
+
+@j"
+dncnn.17.weight_bias
+
+
+@j,
+conv2d"
+ 
+
+batch_size
+@
+Ä
+Äj*
+relu"
+ 
+
+batch_size
+@
+Ä
+Äj-
+getitem"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_1"
+ 
+
+batch_size
+@
+Ä
+Äj/
+	getitem_3"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_2"
+ 
+
+batch_size
+@
+Ä
+Äj/
+	getitem_6"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_3"
+ 
+
+batch_size
+@
+Ä
+Äj/
+	getitem_9"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_4"
+ 
+
+batch_size
+@
+Ä
+Äj0
+
+getitem_12"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_5"
+ 
+
+batch_size
+@
+Ä
+Äj0
+
+getitem_15"
+ 
+
+batch_size
+@
+Ä
+Äj,
+relu_6"
+ 
+
+batch_size
+@
+Ä
+Äj.
+conv2d_7"
+ 
+
+batch_size
+
+Ä
+ÄÇº
+0pkg.torch.export.ExportedProgram.graph_signatureá
+# inputs
+p_dncnn_0_weight: PARAMETER target='dncnn.0.weight'
+p_dncnn_2_weight: PARAMETER target='dncnn.2.weight'
+p_dncnn_3_weight: PARAMETER target='dncnn.3.weight'
+p_dncnn_3_bias: PARAMETER target='dncnn.3.bias'
+p_dncnn_5_weight: PARAMETER target='dncnn.5.weight'
+p_dncnn_6_weight: PARAMETER target='dncnn.6.weight'
+p_dncnn_6_bias: PARAMETER target='dncnn.6.bias'
+p_dncnn_8_weight: PARAMETER target='dncnn.8.weight'
+p_dncnn_9_weight: PARAMETER target='dncnn.9.weight'
+p_dncnn_9_bias: PARAMETER target='dncnn.9.bias'
+p_dncnn_11_weight: PARAMETER target='dncnn.11.weight'
+p_dncnn_12_weight: PARAMETER target='dncnn.12.weight'
+p_dncnn_12_bias: PARAMETER target='dncnn.12.bias'
+p_dncnn_14_weight: PARAMETER target='dncnn.14.weight'
+p_dncnn_15_weight: PARAMETER target='dncnn.15.weight'
+p_dncnn_15_bias: PARAMETER target='dncnn.15.bias'
+p_dncnn_17_weight: PARAMETER target='dncnn.17.weight'
+p_dncnn_18_weight: PARAMETER target='dncnn.18.weight'
+p_dncnn_18_bias: PARAMETER target='dncnn.18.bias'
+p_dncnn_20_weight: PARAMETER target='dncnn.20.weight'
+b_dncnn_3_running_mean: BUFFER target='dncnn.3.running_mean' persistent=True
+b_dncnn_3_running_var: BUFFER target='dncnn.3.running_var' persistent=True
+b_dncnn_3_num_batches_tracked: BUFFER target='dncnn.3.num_batches_tracked' persistent=True
+b_dncnn_6_running_mean: BUFFER target='dncnn.6.running_mean' persistent=True
+b_dncnn_6_running_var: BUFFER target='dncnn.6.running_var' persistent=True
+b_dncnn_6_num_batches_tracked: BUFFER target='dncnn.6.num_batches_tracked' persistent=True
+b_dncnn_9_running_mean: BUFFER target='dncnn.9.running_mean' persistent=True
+b_dncnn_9_running_var: BUFFER target='dncnn.9.running_var' persistent=True
+b_dncnn_9_num_batches_tracked: BUFFER target='dncnn.9.num_batches_tracked' persistent=True
+b_dncnn_12_running_mean: BUFFER target='dncnn.12.running_mean' persistent=True
+b_dncnn_12_running_var: BUFFER target='dncnn.12.running_var' persistent=True
+b_dncnn_12_num_batches_tracked: BUFFER target='dncnn.12.num_batches_tracked' persistent=True
+b_dncnn_15_running_mean: BUFFER target='dncnn.15.running_mean' persistent=True
+b_dncnn_15_running_var: BUFFER target='dncnn.15.running_var' persistent=True
+b_dncnn_15_num_batches_tracked: BUFFER target='dncnn.15.num_batches_tracked' persistent=True
+b_dncnn_18_running_mean: BUFFER target='dncnn.18.running_mean' persistent=True
+b_dncnn_18_running_var: BUFFER target='dncnn.18.running_var' persistent=True
+b_dncnn_18_num_batches_tracked: BUFFER target='dncnn.18.num_batches_tracked' persistent=True
+x: USER_INPUT
+
+# outputs
+sub_28: USER_OUTPUT
+ÇJ
+2pkg.torch.export.ExportedProgram.range_constraints{s77: VR[0, int_oo]}B
+ 
